@@ -1,4 +1,4 @@
-# fluxirator
+# fluxinator
 Intentional Educational Design Flows
 
 ## Motivation
