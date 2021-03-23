@@ -1,4 +1,4 @@
-# fluxinator
+# Moodle Autopilot
 Intentional Educational Design Flows
 
 ## Motivation
