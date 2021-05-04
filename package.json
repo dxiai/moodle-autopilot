@@ -1,0 +1,40 @@
+{
+  "name": "moodle-autopilot",
+  "version": "0.0.1",
+  "description": "Intentional Educational Designs on Moodle",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxiai/moodle-autopilot.git"
+  },
+  "keywords": [
+    "moodle",
+    "api",
+    "bot",
+    "automation",
+    "education",
+    "learning_design",
+    "moderation"
+  ],
+  "author": "Christian Glahn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dxiai/moodle-autopilot/issues"
+  },
+  "homepage": "https://github.com/dxiai/moodle-autopilot#readme",
+  "dependencies": {
+    "js-yaml": "^3.14.1",
+    "superagent": "^6.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "chai": "^4.3.4",
+    "chai-string": "^1.5.0",
+    "eslint": "^7.25.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "mocha": "^8.3.2"
+  }
+}
