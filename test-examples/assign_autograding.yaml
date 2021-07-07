@@ -17,15 +17,34 @@ workflow:
     use: Assignment::Submission
     context: course
     with: 
-      name: Schreiben Sie ein Essay
+      name: Beispielaufgabe
 
   # This is where the magic happens
   - name: Autograding
     id: grades
     use: Script
+    context: 
+      input: submissions
     with: 
       script: | 
-        console.log("hello");
+        console.log("Eingerichte Lösungen")
+        const submissions = context.input.submissions;
+        const grades = submissions.map(s => ({
+           id: s.id,
+           userid: s.userid,
+           status: s.status,
+           gradingstatus: s.gradingstatus,
+           rawtext: s.data[0].rawtext
+        }))
+        .map((sub) => {
+            sub.grade = 0;
+            if (sub.rawtext.match(/richtig/)) {
+              sub.grade = 100;
+            }
+            return sub;
+        });
+        output("grades", grades);
+        console.log(grades);
 
   # report the scores to the students
   - name: Rückmeldung
