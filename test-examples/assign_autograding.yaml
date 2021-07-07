@@ -1,0 +1,41 @@
+metadata: 
+  title: Einfacher Autograder
+
+environment: 
+  url: http://clean-vervet
+
+workflow: 
+  - name: Set Course Context
+    id: course
+    use: Course
+    with:
+      name: kurs1
+  
+  # Get the submissions for an assignment
+  - name: Get Assignment Submissions
+    id: submissions
+    use: Assignment::Submission
+    context: course
+    with: 
+      name: Schreiben Sie ein Essay
+
+  # This is where the magic happens
+  - name: Autograding
+    id: grades
+    use: Script
+    with: 
+      script: | 
+        console.log("hello");
+
+  # report the scores to the students
+  - name: Rückmeldung
+    use: Assignment::Feedback
+    with: 
+      name: Beispielaufgaben
+    context:
+      course: course
+      submissions: submissions
+      grandes: grades
+
+  
+    
