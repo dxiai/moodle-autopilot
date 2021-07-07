@@ -21,7 +21,7 @@ workflow:
 
   # This is where the magic happens
   - name: Autograding
-    id: grades
+    id: grader
     use: Script
     context: 
       input: submissions
@@ -31,7 +31,9 @@ workflow:
         const submissions = context.input.submissions;
         const grades = submissions.map(s => ({
            id: s.id,
+           assignmentid: context.input.assignment,
            userid: s.userid,
+           attemptnumber: s.attemptnumber,
            status: s.status,
            gradingstatus: s.gradingstatus,
            rawtext: s.data[0].rawtext
@@ -40,7 +42,14 @@ workflow:
             sub.grade = 0;
             if (sub.rawtext.match(/richtig/)) {
               sub.grade = 100;
+              sub["plugindata[assignfeedbackcomments_editor][text]"] = "Du hast das **richtige** Wort gefunden";
             }
+            else {
+              sub["plugindata[assignfeedbackcomments_editor][text]"] = "Du musst das **richtige** Wort eingeben";
+            }
+            sub["plugindata[assignfeedbackcomments_editor][format]"] = 4;
+            sub.addattempt = 0;
+            sub.applytoall = 1;
             return sub;
         });
         output("grades", grades);
@@ -52,9 +61,7 @@ workflow:
     with: 
       name: Beispielaufgaben
     context:
-      course: course
-      submissions: submissions
-      grandes: grades
+      - grader
 
   
     
