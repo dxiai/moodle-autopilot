@@ -17,6 +17,7 @@ workflow:
       - course
     with: 
       activity: Beispielaufgabe
+      assess_all: yes
       script: |
         console.log("Bewerte die Lösung");
         const text = submission.raw_text;
