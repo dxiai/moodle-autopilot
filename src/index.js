@@ -19,22 +19,26 @@ async function main(argv) {
     await script.runIntentions();
 }
 
-main(process.argv.slice(2)).catch((err) => {
-    console.log("Script failed at");
-    console.log(`${err.message}`);
+main(process.argv.slice(2))
+    .catch((err) => {
+        console.log("Script failure information:\n\n");
 
-    if (err instanceof MoodleError) {
-        console.log(err.function);
-        console.log(err.url);
-        if (err.data) {
-            console.log(err.data);
+        if (err instanceof MoodleError) {
+            console.log(err.message);
+            console.log(err.function);
+            console.log(err.url);
+            if (err.data) {
+                console.log(err.data);
+            }
+            console.log(err.code);
+            console.log(err.info);
         }
-        console.log(err.code);
-        console.log(err.info);
-    }
-    if (err instanceof IntentionError && err.intention) {
-        console.log(err.intention);
-    }
-    console.log("\n\n");
-    console.log(err);
-});
+        else if (err instanceof IntentionError && err.intention) {
+            console.log(err.message);
+            console.log(err.intention);
+        }
+        else {
+            console.log("\n\n");
+            console.log(err);
+        }
+    });
