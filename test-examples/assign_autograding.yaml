@@ -11,57 +11,19 @@ workflow:
     with:
       name: kurs1
   
-  # Get the submissions for an assignment
-  - name: Get Assignment Submissions
-    id: submissions
-    use: Assignment::Submission
-    context: course
-    with: 
-      name: Beispielaufgabe
-
-  # This is where the magic happens
-  - name: Autograding
+  - use: Assignment::AssessmentScript
     id: grader
-    use: Script
     context: 
-      input: submissions
+      - course
     with: 
-      script: | 
-        console.log("Eingerichte Lösungen")
-        const submissions = context.input.submissions;
-        const grades = submissions.map(s => ({
-           id: s.id,
-           assignmentid: context.input.assignment,
-           userid: s.userid,
-           attemptnumber: s.attemptnumber,
-           status: s.status,
-           gradingstatus: s.gradingstatus,
-           rawtext: s.data[0].rawtext
-        }))
-        .map((sub) => {
-            sub.grade = 0;
-            if (sub.rawtext.match(/richtig/)) {
-              sub.grade = 100;
-              sub["plugindata[assignfeedbackcomments_editor][text]"] = "Du hast das **richtige** Wort gefunden";
-            }
-            else {
-              sub["plugindata[assignfeedbackcomments_editor][text]"] = "Du musst das **richtige** Wort eingeben";
-            }
-            sub["plugindata[assignfeedbackcomments_editor][format]"] = 4;
-            sub.addattempt = 0;
-            sub.applytoall = 1;
-            return sub;
-        });
-        output("grades", grades);
-        console.log(grades);
-
-  # report the scores to the students
-  - name: Rückmeldung
-    use: Assignment::Feedback
-    with: 
-      name: Beispielaufgaben
-    context:
-      - grader
-
-  
-    
+      activity: Beispielaufgabe
+      script: |
+        console.log("Bewerte die Lösung");
+        const text = submission.getRawText();
+        if (text.match(/richtig/)) {
+          submission.score(100);
+          submission.feedback("Du hast das **richtige** Wort verwendet.")
+        }
+        else {
+          submission.feedback("Du musst das **richtige** Wort herausfinden.")
+        }
