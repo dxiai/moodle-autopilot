@@ -46,13 +46,13 @@ in a workflow, then there is an associated educational intention. For example, a
 
 The second part of the intention is the intention resolver. This defines how the intended state of the workflow is achieved, if it is not in this state. For example, our assignment-assessment contains the specification for grading *one* submission. 
 
-## Statfull workflows
+## Stateful workflows
 
 **WORK IN PROGRESS**
 
 *Currently intentions are stateless and do not behave as described below!*
 
-Intentions are statefull. This means that they store a previous state and will not repeat steps that were previously completed. This is particularly useful for managing large cohorts or running tasks, frequently. Autopilot will keep elements of the environment (like git repos and imported data) and skips the steps if nothing has changed.  
+Intentions are stateful. This means that they store a previous state and will not repeat steps that were previously completed. This is particularly useful for managing large cohorts or running tasks, frequently. Autopilot will keep elements of the environment (like git repositories and imported data) and skips the steps if nothing has changed.  
 
 ## LMS Abstraction
 

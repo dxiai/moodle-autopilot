@@ -19,11 +19,13 @@ workflow:
       activity: Beispielaufgabe
       script: |
         console.log("Bewerte die Lösung");
-        const text = submission.getRawText();
+        const text = submission.raw_text;
+
         if (text.match(/richtig/)) {
-          submission.score(100);
-          submission.feedback("Du hast das **richtige** Wort verwendet.")
+          submission.score = 100;
+          submission.feedback = "Du hast das **richtige** Wort verwendet.";
         }
         else {
-          submission.feedback("Du musst das **richtige** Wort herausfinden.")
+          submission.score = 0;
+          submission.feedback = "Du musst das **richtige** Wort herausfinden.";
         }
