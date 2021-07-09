@@ -39,7 +39,14 @@ Another way of passing data into a workflow step is to use special parameters us
 
 Finally a step can be named. This is used for display purposes. If no name is provided, then autopilot will use the plugin name as a name. 
 
-## Statfullnes of the workflows
+### Workflow steps as intentions
+
+A workflow step describes an educational intention. This means that if a step appears
+in a workflow, then there is an associated educational intention. For example, an assignment-assessment intention indicates that all submissions of the related assignment should be assessed. 
+
+The second part of the intention is the intention resolver. This defines how the intended state of the workflow is achieved, if it is not in this state. For example, our assignment-assessment contains the specification for grading *one* submission. 
+
+## Statfull workflows
 
 **WORK IN PROGRESS**
 
