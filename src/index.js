@@ -7,7 +7,7 @@ import {IntentionScript} from "../lib/intention.mjs";
 // const filename = "./test-examples/assign_autograding.yaml";
 
 async function main(argv) {
-    const filename = shift argv;
+    const filename = argv.shift();
     const moodle_token = process.env.MOODLE_TOKEN;
 
     const script = new IntentionScript(filename);
@@ -18,4 +18,4 @@ async function main(argv) {
     await script.runIntentions();
 }
 
-main(process.argv.slice(2))).then(() => {});
+main(process.argv.slice(2)).then(() => {});
