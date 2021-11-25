@@ -1,0 +1,17 @@
+metadata: 
+  title: Aktivitätsliste
+
+environment: 
+  url: https://moodle.zhaw.ch
+
+workflow: 
+  - name: Demo Kurs Context
+    id: course
+    use: Course
+    with:
+      name: fifi
+  
+  - use: Activities
+    id: liste
+    context: 
+      - course
