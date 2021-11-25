@@ -25,7 +25,7 @@ main(process.argv.slice(2))
 
         if (err instanceof MoodleError) {
             console.log(err.message);
-            console.log(err.function);
+            console.log(err.api);
             console.log(err.url);
             if (err.data) {
                 console.log(err.data);
