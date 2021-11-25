@@ -1,8 +1,8 @@
 metadata: 
-  title: Einfacher Autograder
+  title: Mini Personalisierung
 
 environment: 
-  url: http://clean-vervet
+  url: https://moodle.zhaw.ch
 
 workflow: 
   - name: Set Course Context
@@ -10,23 +10,74 @@ workflow:
     use: Course
     with:
       name: kurs1
+
+  - use: Grouping::FromExcel
+    context:
+      - course
+    with: 
+      file: klassenliste.xslx
+      has_headers: yes
+      worksheet: Tabelle1
+      email: E-Mail
+      group: Gruppe
+      metagroup: Klassen
+      create_all: yes
   
-  - use: Assignment::AssessmentScript
-    id: grader
+  - use: Assignment::ExcelAssessment
+    info: |
+      Werte die Beispielaufgabe aus und gibt ein erstes Feedback
     context: 
       - course
     with: 
       activity: Beispielaufgabe
       assess_all: yes
-      script: |
-        console.log("Bewerte die Lösung");
-        const text = submission.raw_text;
+      rubric: beispielaufgabe_punkte.yaml
 
-        if (text.match(/richtig/)) {
-          submission.score = 100;
-          submission.feedback = "Du hast das **richtige** Wort verwendet.";
-        }
-        else {
-          submission.score = 0;
-          submission.feedback = "Du musst das **richtige** Wort herausfinden.";
-        }
+  - use: Assignment::RAssessment
+    id: testat1
+    context: 
+      - course
+    with: 
+      activity: Testat1
+      rubric: Testat1_punkte.yaml
+
+  - use: Grouping
+    context:
+      - course
+    with: 
+      name: RNachhilfe
+      condition: 
+        - testat1.score < 10
+  
+  - use: Grouping
+    context:
+      - course
+    with: 
+      name: Extras
+      condition: 
+        - testat1.score >= 50
+
+  - use: Assignment::ExcelAssessment
+    id: testat2
+    context: 
+      - course
+    with: 
+      activity: Testat2
+      rubric: Testat2_punkte.yaml
+
+  - use: Grouping
+    context:
+      - course
+    with: 
+      name: ExcelNachhilfe
+      condition: 
+        - testat2.score < 10
+  
+  - use: Grouping
+    context:
+      - course
+    with: 
+      name: HiFlyer
+      condition: 
+        - testat1.score >= 50
+        - testat2.score >= 50

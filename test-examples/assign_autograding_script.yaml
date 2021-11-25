@@ -1,0 +1,32 @@
+metadata: 
+  title: Einfacher Autograder
+
+environment: 
+  url: http://clean-vervet
+
+workflow: 
+  - name: Set Course Context
+    id: course
+    use: Course
+    with:
+      name: kurs1
+  
+  - use: Assignment::AssessmentScript
+    id: grader
+    context: 
+      - course
+    with: 
+      activity: Beispielaufgabe
+      assess_all: yes
+      script: |
+        console.log("Bewerte die Lösung");
+        const text = submission.raw_text;
+
+        if (text.match(/richtig/)) {
+          submission.score = 100;
+          submission.feedback = "Du hast das **richtige** Wort verwendet.";
+        }
+        else {
+          submission.score = 0;
+          submission.feedback = "Du musst das **richtige** Wort herausfinden.";
+        }
