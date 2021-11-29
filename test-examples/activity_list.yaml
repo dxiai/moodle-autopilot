@@ -2,7 +2,7 @@ metadata:
   title: Aktivitätsliste
 
 environment: 
-  url: https://moodle.zhaw.ch
+  url: https://moodle-test-ub.zhaw.ch
 
 workflow: 
   - name: Demo Kurs Context

@@ -2,7 +2,8 @@ metadata:
   title: Mini Personalisierung
 
 environment: 
-  url: https://moodle.zhaw.ch
+  url: https://moodle-test-ub.zhaw.ch
+  type: moodle
 
 workflow: 
   - name: Set Course Context
