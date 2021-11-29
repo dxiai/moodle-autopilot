@@ -114,5 +114,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-doc/~$moodle_api_functions.xlsx
+doc/~$*.xlsx
 .DS_Store
