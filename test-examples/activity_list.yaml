@@ -1,5 +1,5 @@
 metadata: 
-  title: Aktivitätsliste
+  title: Aktivitätsliste with basic output via log intent
 
 environment: 
   url: https://moodle-test-ub.zhaw.ch
