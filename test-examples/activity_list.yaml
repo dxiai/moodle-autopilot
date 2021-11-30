@@ -9,9 +9,15 @@ workflow:
     id: course
     use: Course
     with:
-      name: fifi
+      name: BA.UI.Inf.21
   
   - use: Activities
     id: liste
+    with:
+      type: url
     context: 
       - course
+
+  - use: Log
+    context: 
+      - liste
