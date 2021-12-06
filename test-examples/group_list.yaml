@@ -1,0 +1,21 @@
+metadata: 
+  title: Gruppen als JSON Ausgabe via Log Intent
+
+environment: 
+  url: https://moodle-test-ub.zhaw.ch
+
+workflow: 
+  - name: Demo Kurs Context
+    id: course
+    use: Course
+    with:
+      name: fifi
+  
+  - use: Group
+    id: gruppen
+    context: 
+      - course
+
+  - use: Log
+    context: 
+      - gruppen
