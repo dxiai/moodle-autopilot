@@ -11,10 +11,12 @@ workflow:
     with:
       name: fifi
   
-  - use: Group
+  - use: GroupsFromTable
     id: gruppen
     context: 
       - course
+    with:
+      spreadsheet: test-examples/excel_grouping.xslx
 
   - use: Log
     context: 

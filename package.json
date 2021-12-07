@@ -30,8 +30,10 @@
   "dependencies": {
     "js-yaml": "^3.14.1",
     "node-html-parser": "^4.0.0",
+    "read-excel-file": "^5.2.25",
     "superagent": "^6.1.0",
-    "superagent-no-cache": "^0.1.1"
+    "superagent-no-cache": "^0.1.1",
+    "xlsx": "^0.17.4"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
