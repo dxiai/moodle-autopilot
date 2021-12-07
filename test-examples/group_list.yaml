@@ -16,7 +16,7 @@ workflow:
     context: 
       - course
     with:
-      spreadsheet: test-examples/excel_grouping.xslx
+      spreadsheet: test-examples/excel_grouping.xlsx
 
   - use: Log
     context: 
