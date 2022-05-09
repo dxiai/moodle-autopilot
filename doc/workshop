@@ -1,0 +1,6 @@
+Titel: Grundkonzepte der Personalisierung mit Moodle und ihre Automatisierung
+Datum: 21.6.2022
+
+Abstract: 
+
+Personalisierung ist von Lernangeboten ist eines der grossen Versprechungen der digitalen Lehre. Personalisierung wird aber nicht automatisch durch online Lernlattformen erzeugt. Stattdessen müssen Dozierende Personalisierung bereits in der didaktischen Lehrkonzeption vorsehen und in der Lernplattform abbilden. Der didaktische Anker für die digitale Lehre an der ZHAW ist Moodle. Moodle verfügt über einige Konzepte und Werkzeuge, die wir für die Personalisierung unserer Lernangebote nutzten können. Leider sind diese Konzepte und Werkzeuge gut versteckt und nicht intuitiv zu bedienen. In diesem Workshop gehen wir auf zwei Personalisierungskonzepte in Moodle ein: Personalisierung durch individuelle Rückmeldungen und Personalisierung durch Lernweganpassung. Weil beide Personalisierungskonzepte für Dozierende in grossen Kohorten sehr arbeitsintensiv werden können, haben wir mit dem Moodle Autopiloten ein kleines Werkzeug entwickelt, mit dem wir die Standard-Aufgaben bei der Personalisierung von Lernerlebnissen automatisieren. 
