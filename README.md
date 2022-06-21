@@ -17,7 +17,7 @@ For system administrators it is recommended to expose the relevant APIs through 
 ## Personalisation in Moodle
 
 
-## General Princinple 
+## General Principle 
 
 * Educational scripts are designed to respond to changes in the course. Each educational script represents the intended state of a course after an intervention.
 
