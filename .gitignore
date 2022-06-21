@@ -116,3 +116,4 @@ dist
 .pnp.*
 doc/~$*.xlsx
 .DS_Store
+test-examples/~$excel_grouping.xlsx
