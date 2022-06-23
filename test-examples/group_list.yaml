@@ -5,7 +5,7 @@ environment:
   url: https://moodle-test-ub.zhaw.ch
 
 workflow: 
-  - name: Demo Kurs Context
+  - name: Demo Kurs
     id: course
     use: Course
     with:
